@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header-container{
+    height: 10vh;
+    background-color: #0f1111;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.amazon-logo:hover{
+    border: 1px solid white;
+}
+.logo-Text-container:hover{
+    border: 1px solid white;
+
+}
+.Header-signin-text:hover{
+    border: 1px solid white;
+}
+.logo-Text-container{
+    height: 8.5vh;
+    padding: 6px;
+}
+.amazon-logo{
+    height: 8.5vh;
+}
+
+.sign-in-text{
+    color: white !important;
+    text-decoration: none !important;
+}
+.Address-Text{
+    color: rgb(231, 226, 226);
+}
+
+.logo-text{
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.Logo-conatiner{
+    display: flex;
+    width: 28%;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+.input-section{
+    height: 40px;
+    display: flex;
+    width: 40%;
+}
+
+.searchBtn{
+    height: 40px;
+}
+
+
+.Header-options-section{
+    height: 40px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cartIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header-Dropdown{
+ background-color: #ffffff;
+ font-weight: 800;
+ font-size: 14px;
+ height: 30px;
+}
+
+.Header-signin-text{
+color: white;
+height: 8.5vh;
+    padding: 6px;
+
+}

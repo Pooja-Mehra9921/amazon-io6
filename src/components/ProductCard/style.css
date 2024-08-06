@@ -1,0 +1,8 @@
+.btn-container
+{display: flex;
+justify-content: space-between;
+gap: 12px;
+height: 25px;
+font-size: 12px;
+margin-top: 5px;
+}

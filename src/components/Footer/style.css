@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-container{
+    height: 55vh;
+    width: 100%;
+    background-color: #232f3e;
+    display: flex;
+    justify-content: center;
+align-items: center;
+margin-top: 5px;
+}
+
+.Items-container{
+    margin: auto;
+    height: 50vh;
+}
+.footer-links{
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    color: white !important;
+
+}
