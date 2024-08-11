@@ -3,7 +3,7 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import "./FooterBasic.css";
+import "./style.css";
 const FooterBasic = () => {
   return (
     <Box
