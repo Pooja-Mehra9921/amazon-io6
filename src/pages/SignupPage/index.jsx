@@ -1,11 +1,12 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-// import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
-// import "./SignupPage.css";
-// import theme from "../../../theme";
+import "./style.css";
+import FooterBasic from "../../components/FooterBasic";
+
+
 const SignupPage = () => {
   const [show, setShow] = useState(false);
   const [errorShow, setErrorShow] = useState(false);
@@ -52,61 +53,62 @@ const SignupPage = () => {
   console.log("emailOrNumber", emailOrNumber);
   console.log("inputTypajdgsjhdgse", show);
   console.log("name", name, name.length);
+
+
   return (
-    <Box>
-      <Box sx={{ margin: "70px 0 0 600px" }}>
-        <Typography variant="h5" sx={{ margin: "-30px 0 0 0" }}>
-          Welcome
-        </Typography>
-        <Paper elevation={2} sx={{ height: "480px", width: "320px" }}>
+    <>
+<Box className="main-container">
+<Box className="content-container">
+<Paper elevation={2} style={{ height: "480px", width: "320px" }}>
           <Typography
+          style={{paddingTop:"10px"}}
             variant="h1"
-            sx={{ fontSize: "15px", margin: "0px 0 10px 20px" }}
+            sx={{ fontSize: "20px", margin: "0px 0 0px 15px" }}
           >
-            <input type="radio" style={{ margin: "10px 0 0 0" }} /> Create
-            account New to Amazon?
+            Create account
           </Typography>
           <Typography
             variant="h6"
-            sx={{ fontSize: "14px", margin: "0px 0 0px 20px" }}
+            sx={{ fontSize: "14px", margin: "0px 0 0px 15px" }}
           >
-            First and Last Name
+            Your name
           </Typography>
           {errorShow ? (
             <Typography
               color="red"
-              sx={{ fontSize: "10px", margin: "0px 0 0 20px" }}
+              sx={{ fontSize: "10px", margin: "0px 0 0 15px" }}
             >
-              Please enter the first and last name
+              Please enter your name
             </Typography>
           ) : (
             ""
           )}
-          <TextField
+          <TextField style={{width:"90%",  margin: "0px 20px 0px 15px"}}
             type="text"
             size="small"
             value={name}
+            fullWidth
             sx={{ margin: "0px 0 10px 20px", width: "80%" }}
             onChange={handleName}
           />
 
-          <Typography
+          <Typography 
             variant="h6"
-            sx={{ fontSize: "14px", margin: "0px 0 0 20px" }}
+            sx={{ fontSize: "14px", margin: "10px 0 0px 15px" }}
           >
-            Mobile no or Email number
+            Email
           </Typography>
           {errorShow ? (
             <Typography
               color="red"
-              sx={{ fontSize: "10px", margin: "0px 0 0 20px" }}
+              sx={{ fontSize: "10px", margin: "0px 0 0 15px" }}
             >
-              Pleace enter the mobile number or email number
+              Pleace enter your valid email 
             </Typography>
           ) : (
             ""
           )}
-          <TextField
+          <TextField style={{width:"90%", margin: "0px 20px 0px 15px"}}
             type="text"
             size="small"
             sx={{ margin: "0px 0 10px 20px", width: "80%" }}
@@ -114,7 +116,7 @@ const SignupPage = () => {
           />
           <Typography
             variant="h6"
-            sx={{ fontSize: "14px", margin: "0px 0 0px 20px" }}
+            sx={{ fontSize: "14px", margin: "10px 0 0px 15px" }}
           >
             Create a Password
             {errorShow ? (
@@ -129,7 +131,7 @@ const SignupPage = () => {
             )}
           </Typography>
 
-          <TextField
+          <TextField style={{width:"90%", margin: "0px 20px 0px 15px"}}
             id="outlined-password-input"
             // label="Password"
             type={show ? "text" : "password"}
@@ -139,19 +141,19 @@ const SignupPage = () => {
             onclick={ShowText}
           />
           <Box>
-            <input
+            <input 
               type="checkbox"
               onClick={handleCheckBox}
-              style={{ margin: "0px 0 10px 20px" }}
+              style={{ margin: "10px 0px 10px 15px" }}
             />
-            <Typography variant="p" sx={{ margin: "0 0 0 5px" }}>
+            <Typography  variant="p" sx={{ margin: "0 0 0 5px" }}>
               Show Password
             </Typography>
           </Box>
-          <Button
+          <Button style={{width:"90%", margin:"0 0 0 15px"}}
             sx={{
               margin: "0px 0 10px 20px",
-              width: "260px",
+              width: "90%",
               backgroundColor: "rgb(255,202,40)",
             }}
             onClick={handleContinue}
@@ -203,8 +205,11 @@ const SignupPage = () => {
             </Typography>
           </Box>
         </Paper>
-      </Box>
-    </Box>
+</Box>
+</Box>
+   
+   <FooterBasic/>
+    </>
   );
 };
 export default SignupPage;

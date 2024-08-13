@@ -6,32 +6,27 @@ import Link from "@mui/material/Link";
 import "./style.css";
 const FooterBasic = () => {
   return (
-    <Box
-      sx={{
-        margin: "25px 0 0 0",
-        height: "126px",
-        width: "99.9%",
-        border: "1px solid black",
-        background: "rgb(35,47,62)",
-      }}
-    >
-      <Box className="condition">
-        <Link href="#" underline="hover">
-          {"Conditions of Use"}
-        </Link>
-        <Link href="#" underline="hover" sx={{ margin: "0 0 0px 40px" }}>
-          {"Police Notice "}
-        </Link>
-        <Link href="#" underline="hover" sx={{ margin: "0 0 0px 40px" }}>
-          {"Help"}
-        </Link>
-        <Box sx={{ margin: "20px 0 0 0", color: "white" }}>
-          <Typography variant="p">
-            (c)1996-2024,Amazon.com,Inc, or its affiliates
-          </Typography>
+<>
+    <Box className="basic-main-container">
+      <Box className="items-container">
+        <Box className="menu-container">
+       <Link variant="body1" className="footer-menu" href="/#">Conditions of Use</Link>
+       <Link variant="body1" className="footer-menu" href="/#">Police Notice</Link>
+       <Link variant="body1" className="footer-menu" href="/#">Help</Link>
+
         </Box>
+
+<Box style={{ display:"flex", alignItems:"center", justifyContent:"center", fontSize:"12px"}}>
+  <Typography className="footer-menu" variant="body1">
+  © 1996-2024, Amazon.com, Inc. or its affiliates
+  </Typography>
+</Box>
       </Box>
+
+
     </Box>
+    
+      </>
   );
 };
 export default FooterBasic;

@@ -6,7 +6,7 @@ import "./style.css"
 const Footer=()=>{
     return(
         <>
-        <Box className="main-container">
+        <Box className="footer-main-container">
 <Box className="Items-container">
     <Typography variant="h5" style={{color:"white"}}>
       Get to know Us</Typography>

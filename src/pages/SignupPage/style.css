@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: rgb(200, 188, 15);
+}
+
+.main-container{
+  width: 100%;
+  height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container{
+
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
