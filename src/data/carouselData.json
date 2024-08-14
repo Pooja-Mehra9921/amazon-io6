@@ -1,0 +1,30 @@
+{
+    "sliders":[
+        {
+            "src": "image1",
+           "title":"carousel image"
+        },
+        {
+            "src": "image2",
+           "title":"carousel image"
+        },{
+            "src": "image3",
+           "title":"carousel image"
+        },{
+            "src": "image4",
+           "title":"carousel image"
+        },{
+            "src": "image5",
+           "title":"carousel image"
+        },{
+            "src": "image6",
+           "title":"carousel image"
+        },{
+            "src": "image7",
+           "title":"carousel image"
+        },{
+            "src": "image8",
+           "title":"carousel image"
+        }
+    ]
+}

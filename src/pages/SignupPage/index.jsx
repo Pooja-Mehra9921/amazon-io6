@@ -30,7 +30,7 @@ const SignupPage = () => {
   };
 
   const handleContinue = () => {
-    if (name.length > 0) {
+    if (name.length < 10) {
       setErrorShow(false);
     } else {
       setErrorShow(true);
