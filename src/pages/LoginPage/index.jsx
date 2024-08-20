@@ -20,7 +20,8 @@ import { Visibility,  VisibilityOffOutlined } from "@mui/icons-material";
 import { Chip, Tooltip } from "@mui/material";
 import {API} from "../../configs/api"
 import Tooltip from "@mui/material/Tooltip";
-import FooterBasic from "../../components/FooterBasic"
+import FooterBasic from "../../components/FooterBasic";
+import Loader from "../../components/Loader";
 import "./style.css";
 
 
@@ -35,7 +36,8 @@ const LoginPage = () => {
 
   const [showPassword, setShowPassword] = React.useState(false);
   const [loginData, setloginData] = useState({email:"", password:""});
-  const [isSubmit, setisSubmit] = useState(false)
+  const [isSubmit, setisSubmit] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
 const handlepassword =()=>{
 console.log("password clicked");
@@ -44,22 +46,29 @@ setShowPassword(!showPassword);
 
 const handleLogin =async()=>{
   try{
-
+    setLoading(true);
   if(!loginData.email.length <6 || !loginData.password.length<7) return;
   setisSubmit(true);
 
-  const resp = await axios.post(API.LOGIN_API,{
+  const {status, data} = await axios.post(API.LOGIN_API,{
 
       username: 'emilys',
       password: 'emilyspass',
-      expiresInMins: 30, // optional, defaults to 60
+      expiresInMins: 30 // optional, defaults to 60
 
  });
 
-  console.log("--response", resp);
+  console.log("--response", data);
+  if(status==200){
+    setLoading(false);
+    localStorage.setItem("userData", data);
+    navigate("/homepage");
+  }
 }
 catch(err)
   {
+    setLoading(false);
+
 console.log("---error in login process", err);
 }
 };
@@ -91,6 +100,7 @@ console.log("login data", loginData);
 
   return (
     <>
+    <Loader isLoading={isLoading}/>
     <Grid container className="main-conatiner" spacing={2}>
       <Grid style={{ display:"flex", alignItem:"center", justifyContent:"center"}} xs={6} md={8}>
           

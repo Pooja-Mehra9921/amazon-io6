@@ -1,215 +1,195 @@
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Divider from "@mui/material/Divider";
-import "./style.css";
+import { Box, Chip, IconButton, InputAdornment, Paper, TextField, Tooltip, Typography } from "@mui/material";
+import "./style.css"
+import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import { useNavigate } from "react-router-dom";
+import { amber } from "@mui/material/colors";
 import FooterBasic from "../../components/FooterBasic";
+import Homepage from "../Homepage";
+
+const SignupPage =()=>{
 
 
-const SignupPage = () => {
-  const [show, setShow] = useState(false);
-  const [errorShow, setErrorShow] = useState(false);
-  const [name, setName] = useState("");
-  const [emailOrNumber, setEmailOrNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const ShowText = (e) => {
-    setPassword(e.target.value);
-    console.log("ShowText", ShowText);
-    console.log("e", e.target.value);
-  };
-
-  const handleCheckBox = () => {
-    console.log("handleCheckBox");
-    setShow(() => !show);
-  };
-
-  const handleName = (e) => {
-    setName(e.target.value);
-    console.log("e", e.target.value);
-  };
-
-  const handleContinue = () => {
-    if (name.length < 10) {
-      setErrorShow(false);
-    } else {
-      setErrorShow(true);
-    }
-    if (emailOrNumber.length > 0) {
-      setErrorShow(false);
-    } else {
-      setErrorShow(true);
-    }
-    if (password.length > 0) {
-      setErrorShow(false);
-    } else {
-      setErrorShow(true);
-    }
-  };
-  const handleNumberOrEmail = (e) => {
-    setEmailOrNumber(e.target.value);
-    console.log("e", e.target.value);
-  };
-  console.log("emailOrNumber", emailOrNumber);
-  console.log("inputTypajdgsjhdgse", show);
-  console.log("name", name, name.length);
+  const navigate = useNavigate();
 
 
-  return (
-    <>
-<Box className="main-container">
-<Box className="content-container">
-<Paper elevation={2} style={{ height: "480px", width: "320px" }}>
-          <Typography
-          style={{paddingTop:"10px"}}
-            variant="h1"
-            sx={{ fontSize: "20px", margin: "0px 0 0px 15px" }}
-          >
-            Create account
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{ fontSize: "14px", margin: "0px 0 0px 15px" }}
-          >
-            Your name
-          </Typography>
-          {errorShow ? (
-            <Typography
-              color="red"
-              sx={{ fontSize: "10px", margin: "0px 0 0 15px" }}
-            >
-              Please enter your name
-            </Typography>
-          ) : (
-            ""
-          )}
-          <TextField style={{width:"90%",  margin: "0px 20px 0px 15px"}}
-            type="text"
-            size="small"
-            value={name}
-            fullWidth
-            sx={{ margin: "0px 0 10px 20px", width: "80%" }}
-            onChange={handleName}
-          />
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [loginData, setloginData] = useState({email:"", password:""});
+  const [isSubmit, setisSubmit] = useState(false)
 
-          <Typography 
-            variant="h6"
-            sx={{ fontSize: "14px", margin: "10px 0 0px 15px" }}
-          >
-            Email
-          </Typography>
-          {errorShow ? (
-            <Typography
-              color="red"
-              sx={{ fontSize: "10px", margin: "0px 0 0 15px" }}
-            >
-              Pleace enter your valid email 
-            </Typography>
-          ) : (
-            ""
-          )}
-          <TextField style={{width:"90%", margin: "0px 20px 0px 15px"}}
-            type="text"
-            size="small"
-            sx={{ margin: "0px 0 10px 20px", width: "80%" }}
-            onChange={handleNumberOrEmail}
-          />
-          <Typography
-            variant="h6"
-            sx={{ fontSize: "14px", margin: "10px 0 0px 15px" }}
-          >
-            Create a Password
-            {errorShow ? (
-              <Typography
-                color="red"
-                sx={{ fontSize: "10px", margin: "0px 0 0 0px" }}
-              >
-                Please enter the Password
-              </Typography>
-            ) : (
-              ""
-            )}
-          </Typography>
-
-          <TextField style={{width:"90%", margin: "0px 20px 0px 15px"}}
-            id="outlined-password-input"
-            // label="Password"
-            type={show ? "text" : "password"}
-            autoComplete="current-password"
-            size="small"
-            sx={{ margin: "0px 0 10px 20px", width: "80%" }}
-            onclick={ShowText}
-          />
-          <Box>
-            <input 
-              type="checkbox"
-              onClick={handleCheckBox}
-              style={{ margin: "10px 0px 10px 15px" }}
-            />
-            <Typography  variant="p" sx={{ margin: "0 0 0 5px" }}>
-              Show Password
-            </Typography>
-          </Box>
-          <Button style={{width:"90%", margin:"0 0 0 15px"}}
-            sx={{
-              margin: "0px 0 10px 20px",
-              width: "90%",
-              backgroundColor: "rgb(255,202,40)",
-            }}
-            onClick={handleContinue}
-          >
-            Continue
-          </Button>
-          <Box>
-            <Typography
-              component="span"
-              sx={{ margin: "0px 0 0 20px", fontSize: "14px" }}
-            >
-              By continuing, you agree to Amazon's{" "}
-              <Link
-                href="#"
-                variant="condition"
-                sx={{ margin: "0px 0 0 20px" }}
-              >
-                {"conditions of use"}
-              </Link>
-              <Typography component="span" sx={{ fontSize: "14px" }}>
-                {" "}
-                and{" "}
-              </Typography>
-              <Link href="#" variant="privacy" sx={{ fontSize: "14px" }}>
-                {"Privacy Notice."}
-              </Link>
-            </Typography>
-          </Box>
-          <Divider sx={{ margin: "10px 0 0 0px" }} />
-          <Box sx={{ margin: "10px 0 0 20px" }}>Buying for work?</Box>
-          <Box className="shop-link">
-            <Link href="#" underline="none" sx={{ margin: "0px 0 10px 20px" }}>
-              {"Create a free business account"}
-            </Link>
-          </Box>
-          <Box
-            sx={{
-              height: "45px",
-              width: "100%",
-              // border: "1px solid black",
-              margin: "10px 0 0 0",
-              borderRadius: "2px",
-              backgroundColor: "rgb(243,243,243)",
-            }}
-          >
-            <Typography variant="p" sx={{ margin: "20px 0 0 0" }}>
-              <input type="radio" style={{ margin: "10px 0 0 20px" }} />
-              Sign in Already a customer?
-            </Typography>
-          </Box>
-        </Paper>
-</Box>
-</Box>
-   
-   <FooterBasic/>
-    </>
-  );
+const handlepassword =()=>{
+console.log("password clicked");
+setShowPassword(!showPassword);
 };
+
+const handleLogin =async()=>{
+  try{
+
+  if(!loginData.email.length <6 || !loginData.password.length<7) 
+    
+    return;
+  setisSubmit(true);
+
+  const resp = await axios.post(API.LOGIN_API,{
+
+      username: 'emilys',
+      password: 'emilyspass',
+      expiresInMins: 30, // optional, defaults to 60
+
+ });
+
+  console.log("--response", resp);
+}
+catch(err)
+  {
+console.log("---error in login process", err);
+}
+};
+
+
+const handleChange = (type) => (event) =>{
+  // setisSubmit(false);
+console.log("type", type);
+  // if(type=="email"){
+  //   setloginData({...loginData, email: event.target.value})
+  // }
+  // else if(type=="password"){
+  //   setloginData({...loginData, password: event.target.value})
+
+  // }
+  setloginData({...loginData, [type]: event.target.value})
+
+}
+
+const nameErr =  isSubmit && loginData?.name.length <=5;
+const emailErr =  isSubmit && loginData?.email.length <=5;
+const passErr =  isSubmit && loginData?.password.length <=6;
+const rePassErr =  isSubmit && loginData?.password.length <=6;
+
+console.log("login data", loginData);
+
+  return(
+    <>
+    <Box className="signup-main-container">
+      <Paper className="paper-container" elevation={2}>
+        <Typography variant="h5" style={{padding:"10px 20px"}}>Create Account</Typography>
+        
+<Typography variant="body1" style={{marginLeft:"20px", marginTop:"5px", fontSize:"14px"}}><strong>Your Name</strong></Typography>
+<TextField style={{width:"90%", margin: "5px 5px -2px 20px"}}
+        type="text"
+        label="Enter your name "
+        size="small"
+        margin="normal"
+        onChange={handleChange("name")}
+        error={nameErr}
+        helperText= {nameErr && "please enter your name."}
+        />
+
+<Typography variant="body1" style={{marginLeft:"20px", marginBottom:"-12px", marginTop:"20px", fontSize:"14px"}}><strong>Enter Email</strong></Typography>
+                <TextField style={{width:"90%", marginLeft:"20px", marginRight:"20px"}}
+                 
+                 id="outlined-error-helper-text"
+                  label="Email"
+                 variant="outlined"
+                  size="small"
+                 margin="normal"
+                 InputProps={{
+                 endAdornment: (
+               <InputAdornment position="start">
+               <EmailOutlinedIcon  style={{color: emailErr ? "red" : "grey" }}/>
+               </InputAdornment>
+               ),
+                }}
+onChange={handleChange("email")}
+                error={emailErr}
+                helperText= {emailErr && "please enter valid email."}
+              />
+
+<Typography variant="body1" style={{marginLeft:"20px", marginBottom:"-2px", marginTop:"5px", fontSize:"14px"}}><strong>Enter Password</strong></Typography>
+
+          <TextField style={{width:"90%", marginLeft:"20px", marginRight:"20px"}}
+          
+          id="outlined-error-helper-text"
+          label="Password"
+          type={showPassword ? "text" :  "password"}
+        
+          variant="outlined"
+          fullWidth
+          size="small"
+          margin="dense"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="start">
+                <IconButton onClick={handlepassword}>
+                  {showPassword
+                    ?
+                    <Visibility style={{color: passErr ? "red" : "grey" }}/>
+                    : 
+                     <VisibilityOffOutlined style={{color: passErr ? "red" : "grey" }} />
+                  }
+                </IconButton>
+           
+              </InputAdornment>
+            ),
+          }}
+          onChange={handleChange("password")}
+          error={passErr}
+          helperText= {passErr && "please enter valid password."}
+        />
+
+        
+<Typography variant="body1" style={{marginLeft:"20px", marginBottom:"-2px", marginTop:"5px", fontSize:"14px"}}><strong>Re-enter Password</strong></Typography>
+
+          <TextField style={{width:"90%", marginLeft:"20px", marginRight:"20px"}}
+          
+          id="outlined-error-helper-text"
+          label="Re-enter Password"
+          type={showPassword ? "text" :  "password"}
+        
+          variant="outlined"
+          fullWidth
+          size="small"
+          margin="dense"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="start">
+                <IconButton onClick={handlepassword}>
+                  {showPassword
+                    ?
+                    <Visibility style={{color: passErr ? "red" : "grey" }}/>
+                    : 
+                     <VisibilityOffOutlined style={{color: passErr ? "red" : "grey" }} />
+                  }
+                </IconButton>
+           
+              </InputAdornment>
+            ),
+          }}
+          onChange={handleChange("re-enter-password")}
+          error={rePassErr}
+          helperText= {rePassErr && "please enter valid password."}
+        />
+
+<Tooltip title={
+  (loginData.email.length <6 && "please enter valid email") || (loginData.password.length <7 && "please enter valid password")
+  } >
+  <span>
+<Chip style={{width:"90%", margin:"10px 20px", background: amber[300], marginTop:"30px"}} 
+label="Create your new account  " 
+variant="contained" 
+onClick={handleLogin} 
+disabled={loginData.email.length <6 || loginData.password.length<7}
+/> 
+</span>
+</Tooltip>
+      </Paper>
+    </Box>
+
+    <FooterBasic/>
+    </>
+  )
+}
+
 export default SignupPage;

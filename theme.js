@@ -1,10 +1,18 @@
 import { createTheme } from "@mui/material/styles";
+
+
 const theme = createTheme({
   palette: {
     mode: "light",
-    amber: {
+    primary: {
       main: "#ffc107",
     },
+    secondary:{
+      main:"#ffffff"
+    },
+    third:{
+      main:"#000000"
+    }
   },
 });
 export default theme;
