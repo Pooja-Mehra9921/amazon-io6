@@ -1,0 +1,40 @@
+.suggestion-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-container{
+    height: 200px;
+    width: 95%;
+    background-color: white;
+    box-shadow: 1px 1px 10px #000000;
+    margin: 10px; 
+}
+
+.text-container{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 50px;
+    margin-left: 15px;
+    width: 100%;
+}
+
+.sugg-card{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    overflow-y: hidden;
+    
+
+}
+.cart1{
+    height: 135px;
+    width: 135px;
+    margin: 10px;
+    margin-bottom: 25px;
+}
