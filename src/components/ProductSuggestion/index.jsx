@@ -1,48 +1,54 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Box from "@mui/material/Box";
-import axios from "axios"
-import "./style.css"
-import { Link, Typography } from "@mui/material";
-import dummy from "../../assets/images/default.png"
-import API from "../../configs/api"
+import Typography from "@mui/material/Typography";
+import "./style.css";
+import { setSelectedProduct } from "../../redux/appReducer/appReducer";
+import DUMMY from "../../assets/images/DummyProduct.png";
 
-const ProductSuggestion =({title="", link="", filteredProducts={dummy}})=>{
+const ProductSuggestion = ({ title = "", products = [] }) => {
+  console.log("products", title, products);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-const fetchapi = async()=>{
-    try{
-const API = API.PRODUCT_SUGGESTION_API;
-const resp = await axios(API);
-console.log("response", resp)
-    }
-    catch(err){
-        console.log("error in progress", err);
-    }
+  /**
+   * @description Redirecting selected product to detail page
+   * @param {Object} product
+   * @returns
+   */
+  const redirectToSelectedProductPage = (product) => (event) => {
+    dispatch(setSelectedProduct(product));
+    navigate(`/selected-product/${product?.id}`);
+  };
+  return (
+    <>
+    <Box className="product-suggestion-container">
+        <Typography variant="h5">{title}</Typography>
+        <>
+          <Box className="product-suggestion">
+            {products.map((product, index) => {
+              return (
+                <Box
+                  key={index}
+                  className="single-product-card"
+                  onClick={redirectToSelectedProductPage(product)}
+                >
+                  <img
+                    src={product?.thumbnail ? product?.thumbnail : DUMMY}
+                    alt={"title"}
+                  />
+                  <Typography variant="body1" style={{ display:"flex", alignItems:"justify", width:"100%", justifyContent:"center", textAlign:"center"}}>{product?.title}</Typography>
+                  <Typography variant="body2">{product?.price}</Typography>
+                </Box>
+              );
+            })}
+          </Box>
+        </>
+      </Box>
+    </>
+  );
 };
-
-fetchapi();
-
-    return (
-<>
-
-<Box className="suggestion-container">
-<Box className="card-container">
-<Box className="text-container">
-    <Typography variant="body1" style={{fontSize:"20px"}}><strong>{title}</strong></Typography>
-    <Typography ><Link href="/#" variant="body1" style={{fontSize:"14px", paddingTop:"20px", paddingLeft:"15px", textDecoration:"none"}}>{link}</Link></Typography>
-</Box>
-<Box className="sugg-card">
-        <Box className="cart1">
-            <img style={{height:"135px", width:"135px"}} src={dummy} alt="dummy image" />
-        </Box>
-    </Box>
-</Box>
-</Box>
-
-
-</>
-    );
-};
-
 
 export default ProductSuggestion;

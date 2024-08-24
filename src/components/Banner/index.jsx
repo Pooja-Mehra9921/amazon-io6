@@ -16,7 +16,7 @@ import "./style.css";
 const Banner = () => {
   return (
     <Box className="banner-container">
-      <Carousel showThumbs={false} showStatus={false}>
+      <Carousel showThumbs={false} showStatus={false} showIndicators={false}>
         <div>
           <img className="banner-images" src={Banner_Image1} alt="Carousel Image 1" />
         </div>
