@@ -6,6 +6,10 @@
     padding: 1%;
     overflow-x: auto;
     width: 95%;
+    position: relative;
+    z-index: 1;
+    margin-top: -210px;
+    margin-bottom: 230px;
     
     
   }

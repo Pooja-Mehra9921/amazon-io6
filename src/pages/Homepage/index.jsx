@@ -126,7 +126,7 @@ const Homepage = () => {
       <Header />
       <SubHeader />
       <Banner />
-      <ProductSuggestion
+      <ProductSuggestion 
           title={"Best of Electronics"}
           products={electronicProducts}
         />

@@ -5,13 +5,14 @@ import SubHeader from "../../components/Sub-header";
 import Footer from "../../components/Footer";
 import axios from "axios";
 import "./style.css";
-import { Box } from "@mui/material";
+import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon  from '@mui/icons-material/ViewModule';
 import Loader from "../../components/Loader";
 
 const ProductPage = (props) => {
   const [pData, setPdata] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [listType, setListType] = useState("grid");
 
   const fetchProductdata = async () => {
     try {
@@ -41,6 +42,23 @@ const ProductPage = (props) => {
     {isLoading && <Loader isLoading={isLoading} />}
       <Header />
       <SubHeader />
+      <Box className="toggle-button-container">
+        <Box className="toggle-container">
+        <ToggleButtonGroup  style={{marginRight:"10px"}}
+      orientation="horizontel"
+      exclusive
+    >
+      <ToggleButton value="module" aria-label="module" style={{height:"30px", width:"30px",marginLeft:"2px", border:"1px solid #d3d1d1"}}>
+        <ViewModuleIcon  />
+      </ToggleButton>
+<ToggleButton value="list" aria-label="list" varient="outlined" style={{height:"30px", width:"30px", marginLeft:"2px", border:"1px solid #d3d1d1"}}>
+        <ViewListIcon />
+      </ToggleButton>
+    </ToggleButtonGroup>
+        </Box>        
+      </Box>
+
+      <Box className="product-main-container">
       <Box className="product-section">
         {pData.map((product, index) => (
           <ProductCard 
@@ -48,6 +66,7 @@ const ProductPage = (props) => {
             product={product}
           />
         ))}
+      </Box>
       </Box>
       <Footer />
     </>
