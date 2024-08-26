@@ -63,7 +63,14 @@ const ProductCard =(props)=>{
             </Button>
 
           </Box>
-  
+          <Button
+            style={{fontSize:9, marginTop:"10px", backgroundColor:"#faaf00"}}
+              variant="contained"
+              color="secondary"
+              
+            >
+              Buy Now
+            </Button>
           
         </CardContent>
       

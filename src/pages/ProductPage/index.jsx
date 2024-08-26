@@ -60,10 +60,10 @@ else{
       exclusive
     >
       <ToggleButton onClick={changeView("grid")} value="module" aria-label="module" style={{height:"30px", width:"30px",marginLeft:"2px", border:"none"}}>
-        <ViewModuleIcon  />
+        <ViewModuleIcon color={listType == "grid" ? "blue" : "grey"}  />
       </ToggleButton>
 <ToggleButton onClick={changeView("list")} value="list" aria-label="list" varient="outlined" style={{height:"30px", width:"30px", marginLeft:"2px", border:"none"}}>
-        <ViewListIcon />
+        <ViewListIcon color={listType == "list" ? "blue" : "grey"} />
       </ToggleButton>
     </ToggleButtonGroup>
         </Box>        

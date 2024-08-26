@@ -25,11 +25,11 @@ const ProductCardList =({product})=>{
       <Typography style={{lineHeight:1}} variant="body2" color="text.secondary">
             {product?.rating}</Typography>
     </Stack>
-    <Typography variant="body1">{product?.description}</Typography>
-    <Typography style={{color:"blue"}}>{product?.warrantyInformation}</Typography>
+    <Typography variant="body1" style={{fontSize:"14px"}}>{product?.description}</Typography>
+    <Typography style={{color:"green", fontSize:"14px"}}>{product?.warrantyInformation}</Typography>
     <Box style={{display:"flex", color:"red", fontSize:"12px"}}>
-    <Typography style={{marginRight:"10px"}}>{product?.availabilityStatus}</Typography>
-    <Typography>{product?.stock}</Typography>
+    <Typography variant="body1" style={{marginRight:"10px", fontSize:"14px"}}>{product?.availabilityStatus}</Typography>
+    <Typography variant="body1" style={{fontSize:"14px"}}>{product?.stock}</Typography>
     </Box>
     
           <Box className="list-btn-container" >
@@ -52,6 +52,14 @@ const ProductCardList =({product})=>{
             </Button>
 
           </Box>
+          <Button
+            style={{fontSize:9, marginTop:"10px", backgroundColor:"#faaf00"}}
+              variant="contained"
+              color="secondary"
+              
+            >
+              Buy Now
+            </Button>
   
             </Box>
                 </Box>
