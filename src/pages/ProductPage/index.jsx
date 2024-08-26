@@ -9,10 +9,12 @@ import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon  from '@mui/icons-material/ViewModule';
 import Loader from "../../components/Loader";
+import ProductCardList from "../../components/ProductCartList";
 
 const ProductPage = (props) => {
   const [pData, setPdata] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [listType, setlistType ] = useState("grid");
 
   const fetchProductdata = async () => {
     try {
@@ -37,6 +39,15 @@ const ProductPage = (props) => {
 
   console.log("--pData", pData);
 
+  const changeView =(type)=> ()=>{
+if(type == "grid"){
+  setlistType("grid");
+}
+else{
+  setlistType("list");
+}
+  };
+
   return (
     <>
     {isLoading && <Loader isLoading={isLoading} />}
@@ -48,17 +59,18 @@ const ProductPage = (props) => {
       orientation="horizontel"
       exclusive
     >
-      <ToggleButton value="module" aria-label="module" style={{height:"30px", width:"30px",marginLeft:"2px", border:"1px solid #d3d1d1"}}>
+      <ToggleButton onClick={changeView("grid")} value="module" aria-label="module" style={{height:"30px", width:"30px",marginLeft:"2px", border:"none"}}>
         <ViewModuleIcon  />
       </ToggleButton>
-<ToggleButton value="list" aria-label="list" varient="outlined" style={{height:"30px", width:"30px", marginLeft:"2px", border:"1px solid #d3d1d1"}}>
+<ToggleButton onClick={changeView("list")} value="list" aria-label="list" varient="outlined" style={{height:"30px", width:"30px", marginLeft:"2px", border:"none"}}>
         <ViewListIcon />
       </ToggleButton>
     </ToggleButtonGroup>
         </Box>        
       </Box>
 
-      <Box className="product-main-container">
+{listType == "grid" && (
+  <Box className="product-main-container">
       <Box className="product-section">
         {pData.map((product, index) => (
           <ProductCard 
@@ -68,6 +80,20 @@ const ProductPage = (props) => {
         ))}
       </Box>
       </Box>
+)}
+{
+  listType == "list" && (
+    <Box>
+      {pData.map((product, index)=>{
+return(
+  <ProductCardList key={index} product={product}/>
+
+)
+      })}
+    </Box>
+  )
+}
+      
       <Footer />
     </>
   );

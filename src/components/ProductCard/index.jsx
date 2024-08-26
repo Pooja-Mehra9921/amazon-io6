@@ -3,18 +3,24 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea } from '@mui/material';
+import { Box, Button, CardActionArea, Tooltip } from '@mui/material';
 import DefaultImage from "../../assets/images/default.png"
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./style.css"
 
 const ProductCard =(props)=>{
   const {product}= props;
   return(
     <>
-    <Card sx={{ maxWidth: 230, margin:1 }}>
-      <CardActionArea>
+    <Card className="main-card-container" sx={{ maxWidth: 230, margin:1 }}>
+
+    
+        <Box className="heart-icon-container">
+        <FavoriteIcon className="heart-icon" style={{color:"grey"}}/>
+        </Box>
+        
         <CardMedia
         className="product-card"
           component="img"
@@ -23,9 +29,13 @@ const ProductCard =(props)=>{
           alt="green iguana"
         />
         <CardContent>
-          <Typography style={{fontSize:14, lineHeight:1}} gutterBottom variant="body1" component="div">{product?.title}
+          <Tooltip title={product?.title} arrow placement="top">
+          <Typography style={{fontSize:14, lineHeight:1, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap"}} 
+          gutterBottom variant="body1" component="div">{product?.title}
             
-          </Typography>
+            </Typography>
+          </Tooltip>
+          
           <Typography variant="body2" color="text.secondary"><strong>Price</strong> {product?.price}</Typography>
           
           <Stack spacing={1}>
@@ -56,7 +66,7 @@ const ProductCard =(props)=>{
   
           
         </CardContent>
-      </CardActionArea>
+      
       
     </Card>
     </>

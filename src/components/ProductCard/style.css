@@ -1,8 +1,36 @@
-.btn-container
-{display: flex;
+/* .main-card-container{
+background-color: red !important;
+} */
+.btn-container{
+display: flex;
 justify-content: space-between;
 gap: 12px;
 height: 25px;
 font-size: 12px;
 margin-top: 5px;
+}
+
+.heart-icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 95%;
+    margin-top: 5px;
+}
+
+.heart-icon{
+margin: 5px;
+}
+.heart-icon:hover{
+box-shadow: 1px 0px 12px rgb(189, 188, 188);
+border-radius: 4px;
+transition: 0.5s;
+}
+
+.main-card-container:hover{
+box-shadow: 1px 15px 40px rgb(189, 188, 188);
+cursor: pointer;
+transition: 0.5s;
+scale: 1;
+
 }
