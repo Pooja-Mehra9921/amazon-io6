@@ -11,10 +11,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./style.css"
 
 const ProductCard =(props)=>{
+
+  const handleProduct =(product)=>()=>{
+console.log("prodct data--------", product);
+
+
+  }
+
   const {product}= props;
   return(
     <>
-    <Card className="main-card-container" sx={{ maxWidth: 230, margin:1 }}>
+    <Card className="main-card-container" onClick={handleProduct(product)} sx={{ maxWidth: 230, margin:1 }} >
 
     
         <Box className="heart-icon-container">
