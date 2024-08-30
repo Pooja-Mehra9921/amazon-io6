@@ -236,7 +236,6 @@ disabled={loginData.email.length <6 || loginData.password.length<7}
               Create your Amazon Account
             </Button>
           </Box>
-        
       </Grid>
     </Grid>
     
