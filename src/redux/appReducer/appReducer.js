@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const appSlice = createSlice({
-  name: "flipkart",
+  name: "amazon",
   initialState: {
     userData: {},
     products: [],
@@ -12,6 +12,8 @@ const appSlice = createSlice({
 
   reducers: {
     setUserData: (state, action) => {
+      console.log("state---------------",state);
+      console.log("action---------------",action);
       state.userData = action.payload;
     },
     setProducts: (state, action) => {

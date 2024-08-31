@@ -23,6 +23,8 @@ import Tooltip from "@mui/material/Tooltip";
 import FooterBasic from "../../components/FooterBasic";
 import Loader from "../../components/Loader";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../redux/appReducer/appReducer";
 
 
 const LoginPage = () => {
@@ -33,7 +35,7 @@ const LoginPage = () => {
     navigate("/signup");
   };
 
-
+const dispatch = useDispatch();
   const [showPassword, setShowPassword] = React.useState(false);
   const [loginData, setloginData] = useState({email:"", password:""});
   const [isSubmit, setisSubmit] = useState(false);
@@ -44,34 +46,39 @@ console.log("password clicked");
 setShowPassword(!showPassword);
 };
 
-const handleLogin =async()=>{
-  try{
+const handleLogin = async () => {
+  try {
     setLoading(true);
-  if(!loginData.email.length <6 || !loginData.password.length<7) return;
-  setisSubmit(true);
+    setisSubmit(true);
+    
+    // Validation check
+    if (loginData.email.length < 6 || loginData.password.length < 7) {
+      setLoading(false); // Stop loader if validation fails
+      return;
+    }
 
-  const {status, data} = await axios.post(API.LOGIN_API,{
+    // Make the API call
+    const { status, data } = await axios.post(API.LOGIN_API, {
+      username: loginData.email, // Should use the user input
+      password: loginData.password, // Should use the user input
+      expiresInMins: 30, // Optional, defaults to 60
+    });
 
-      username: 'emilys',
-      password: 'emilyspass',
-      expiresInMins: 30 // optional, defaults to 60
-
- });
-
-  console.log("--response", data);
-  if(status==200){
+    // Process the response
+    console.log("--response", data);
+    if (status === 200) {
+      dispatch(setUserData(data));
+      localStorage.setItem("userData", JSON.stringify(data)); // Save user data in localStorage
+      navigate("/homepage");
+    }
+  } catch (err) {
+    console.log("---error in login process", err);
+  } finally {
+    // Stop the loader in both success and error cases
     setLoading(false);
-    localStorage.setItem("userData", data);
-    navigate("/homepage");
   }
-}
-catch(err)
-  {
-    setLoading(false);
-
-console.log("---error in login process", err);
-}
 };
+
 
 
 const handleChange = (type) => (event) =>{
