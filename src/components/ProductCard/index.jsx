@@ -9,11 +9,15 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "./style.css"
+import { useDispatch } from "react-redux";
+import { setSelectedProduct } from "../../redux/appReducer/appReducer";
 
 const ProductCard =(props)=>{
+  const dispatch =useDispatch();
 
   const handleProduct =(product)=>()=>{
 console.log("prodct data--------", product);
+dispatch(setSelectedProduct(product));
 
 
   }

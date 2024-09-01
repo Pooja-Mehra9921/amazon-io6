@@ -12,8 +12,6 @@ const appSlice = createSlice({
 
   reducers: {
     setUserData: (state, action) => {
-      console.log("state---------------",state);
-      console.log("action---------------",action);
       state.userData = action.payload;
     },
     setProducts: (state, action) => {
