@@ -10,6 +10,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon  from '@mui/icons-material/ViewModule';
 import Loader from "../../components/Loader";
 import ProductCardList from "../../components/ProductCartList";
+import SelectedProduct from "../SelectedProduct";
 
 const ProductPage = (props) => {
   const [pData, setPdata] = useState([]);
@@ -50,6 +51,7 @@ else{
 
   return (
     <>
+    <SelectedProduct/>
     {isLoading && <Loader isLoading={isLoading} />}
       <Header />
       <SubHeader />
