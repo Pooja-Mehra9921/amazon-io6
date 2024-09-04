@@ -12,12 +12,15 @@ const appSlice = createSlice({
 
   reducers: {
     setUserData: (state, action) => {
+      console.log("user data------", action.payload);
       state.userData = action.payload;
     },
     setProducts: (state, action) => {
+      
       state.products = action.payload;
     },
     setSelectedProduct: (state, action) => {
+      console.log("action payload in reducer:", action.payload); // Debugging
       state.selectedProduct = action.payload;
     },
     setCartItems: (state, action) => {

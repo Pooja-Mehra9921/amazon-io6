@@ -1,0 +1,105 @@
+.selected-product-container {
+    width: 80% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 2% auto;
+  }
+  .selected-product-container .image-section {
+    width: 40%;
+  }
+  
+  .selected-product-container .image-section .image-magnify-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  
+  .selected-product-container .detail-section {
+    width: 60%;
+    padding: 2%;
+  }
+  
+  .selected-product-container .image-section .image-suggestions {
+    width: 20%;
+  }
+  
+  .selected-product-container .image-section .image-suggestions img {
+    width: 100%;
+    height: 150px;
+    border: 2px solid rgba(156, 60, 60, 0.016);
+  }
+  .selected-product-container .image-section .image-suggestions img:hover {
+    border: 2px solid #2975f0;
+  }
+  
+  .selected-product-container .image-section .image-magnify-sec {
+    width: 80%;
+  }
+  
+  .thumbnail .large-img {
+    width: 100%;
+    height: 850px !important;
+  }
+  
+  .selected-product-container .detail-section .rating-container {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .selected-product-container .detail-section .rating {
+    width: 20px;
+    height: 20px;
+    background-color: #388f3d;
+  }
+  
+  .selected-product-container .detail-section .rating-container .raters {
+    color: #8f918e;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+  
+  .selected-product-container .detail-section .description {
+    width: 70%;
+  }
+  
+  .selected-product-container .detail-section .price {
+    font-weight: 700;
+  }
+  
+  .selected-product-container .detail-section .original-price {
+    color: #878787;
+    font-weight: 500;
+    text-decoration: line-through;
+  }
+  .selected-product-container .detail-section .discount {
+    margin-left: 15px;
+    color: #3f8f3c;
+    font-weight: 500;
+  }
+  
+  .selected-product-container .detail-section .stock {
+    color: #3f8f3c;
+    font-weight: 400;
+    font-weight: 500;
+  }
+  
+  .selected-product-container .detail-section .shippingInformation {
+    color: black;
+  }
+  
+  .selected-product-container .detail-section .specification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .image-section .btn-container {
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    margin: auto;
+  }
+  .image-section .btn-container button {
+    width: 48% !important;
+    font-size: 1.2rem !important;
+  }

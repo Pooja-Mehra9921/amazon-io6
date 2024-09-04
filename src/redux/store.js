@@ -5,10 +5,10 @@ import appReducer from "./appReducer/appReducer";
 
 
 export const Store = configureStore({
-
-    reducer:{
-app: appReducer,
-    }
-});
-
-setupListeners(Store.dispatch);
+    reducer: {
+      app: appReducer,
+    },
+    devTools: true, // Enable Redux DevTools
+  });
+  
+  setupListeners(Store.dispatch);
