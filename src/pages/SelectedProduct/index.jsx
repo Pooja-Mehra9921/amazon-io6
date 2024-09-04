@@ -15,6 +15,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { setCartItems } from "../../redux/appReducer/appReducer";
+import SubHeader from "../../components/Sub-header";
 
 const SelectedProduct = () => {
   const productFromStore = useSelector((store) => store?.app?.selectedProduct);
@@ -25,7 +26,9 @@ const SelectedProduct = () => {
 
   const productInCart = cartItems.filter((cart) => cart.id == params.id);
 
-  const [imgToMagnify, setImgToMagnify] = useState(productFromStore?.thumbnail);
+  const [imgToMagnify, setImgToMagnify] = useState(
+    productFromStore?.thumbnail || ""
+  );
   const [isAddedInCart, setAddedInCart] = useState(productInCart.length > 0);
 
   /**
@@ -42,14 +45,20 @@ const SelectedProduct = () => {
    * @param {Object} product
    * @returns
    */
-  const handleAddToCart = (product) => (e) => {
+  const handleAddToCart = (product) => () => {
     setAddedInCart(true);
     dispatch(setCartItems(product));
   };
 
+  if (!productFromStore) {
+    // If the productFromStore is undefined, display a loading message
+    return <Typography>Loading...</Typography>;
+  }
+
   return (
     <Box style={{ backgroundColor: theme.palette.background.main }}>
       <Header />
+      <SubHeader/>
       <Paper elevation={0} className="selected-product-container">
         <Box className="image-section">
           <Box className="image-magnify-container">
@@ -73,7 +82,7 @@ const SelectedProduct = () => {
                 className="thumbnail"
                 {...{
                   smallImage: {
-                    alt: "Wristwatch by Ted Baker London",
+                    alt: "Product thumbnail",
                     isFluidWidth: true,
                     src: imgToMagnify,
                   },
@@ -104,6 +113,7 @@ const SelectedProduct = () => {
               </Button>
             ) : (
               <Button
+                style={{ fontSize: "12px" }}
                 variant="contained"
                 className="add-cart-btn"
                 startIcon={<ShoppingCartIcon />}
@@ -163,18 +173,19 @@ const SelectedProduct = () => {
             </Typography>
           </Box>
           <Box className="rating-container" sx={{ my: 1 }}>
-            <Button
-              variant="contained"
-              className="rating"
-              endIcon={<StarIcon />}
-            >
-              {(productFromStore?.rating).toFixed(1)}
-            </Button>
+          <Button
+  variant="contained"
+  className="rating"
+  endIcon={<StarIcon />}
+>
+  {productFromStore?.rating ? productFromStore.rating.toFixed(1) : "N/A"}
+</Button>
 
-            <Typography variant="body1" className="raters">
-              {Math.round(Math.random() * 1000)} Ratings &{" "}
-              {productFromStore.reviews.length} Reviews
-            </Typography>
+<Typography variant="body1" className="raters">
+  {Math.round(Math.random() * 1000)} Ratings &{" "}
+  {productFromStore?.reviews?.length || 0} Reviews
+</Typography>
+
           </Box>
 
           <Typography variant="body1" sx={{ my: 1 }}>

@@ -6,19 +6,23 @@ import Typography from "@mui/material/Typography";
 import { Box, Button, Tooltip, Rating, Stack } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";  // Use useNavigate for navigation
-import { setSelectedProduct } from "../../redux/appReducer/appReducer";
+import { useNavigate } from "react-router-dom";  
+import { setCartItems, setSelectedProduct } from "../../redux/appReducer/appReducer";
 import DefaultImage from "../../assets/images/default.png";
 import "./style.css";
 
 const ProductCard = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Correct hook for navigation
+  const navigate = useNavigate(); 
 
   const handleProduct = (product) => {
-    console.log("product data--------", product);
-    dispatch(setSelectedProduct(product)); // Dispatch the selected product to Redux store
-    navigate(`/selected-product`);  // Use the navigate function to route to the selected product page
+    dispatch(setSelectedProduct(product)); 
+    navigate(`/selected-product`);  
+  };
+
+  const handleAddToCart = (product) => (e) => {
+    e.stopPropagation(); // Prevent card click event from triggering
+    dispatch(setCartItems(product)); 
   };
 
   const { product } = props;
@@ -27,7 +31,7 @@ const ProductCard = (props) => {
     <>
       <Card
         className="main-card-container"
-        onClick={() => handleProduct(product)} // Call handleProduct when card is clicked
+        onClick={() => handleProduct(product)} 
         sx={{ maxWidth: 230, margin: 1 }}
       >
         <Box className="heart-icon-container">
@@ -38,7 +42,7 @@ const ProductCard = (props) => {
           className="product-card"
           component="img"
           height="210"
-          image={product?.images[0] || DefaultImage} // Fallback to DefaultImage if product image is not available
+          image={product?.images[0] || DefaultImage} 
           alt="product image"
         />
 
@@ -79,10 +83,20 @@ const ProductCard = (props) => {
           </Stack>
 
           <Box className="btn-container">
-            <Button style={{ fontSize: 9 }} variant="outlined" color="primary">
+            <Button 
+              style={{ fontSize: 9 }} 
+              variant="outlined" 
+              color="primary"
+              onClick={handleAddToCart(product)} // Add to cart without navigating
+            >
               Save For Later
             </Button>
-            <Button style={{ fontSize: 9 }} variant="contained" color="secondary">
+            <Button 
+              style={{ fontSize: 9 }} 
+              variant="contained" 
+              color="secondary"
+              onClick={(e) => e.stopPropagation()} // Prevent navigation on Remove button click
+            >
               Remove
             </Button>
           </Box>
@@ -91,6 +105,7 @@ const ProductCard = (props) => {
             style={{ fontSize: 9, marginTop: "10px", backgroundColor: "#faaf00" }}
             variant="contained"
             color="secondary"
+            onClick={(e) => e.stopPropagation()} // Prevent navigation on Buy Now button click
           >
             Buy Now
           </Button>

@@ -3,7 +3,11 @@
     width: 90%;
     margin: 15px auto;
 }
-
+.product-list-container:hover{
+    border : 1px solid rgb(175, 172, 172);
+    padding: 10px;
+    cursor: pointer;
+}
 .product-image{
     height: 200px;
     width: 200px;

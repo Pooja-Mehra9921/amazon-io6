@@ -4,11 +4,24 @@ import DefaultImage from "../../assets/images/default.png"
 import "./style.css"
 import { Button, Divider, Rating, Stack, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setSelectedProduct } from "../../redux/appReducer/appReducer";
 
 const ProductCardList =({product})=>{
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); // Correct hook for navigation
+
+  const handleProduct = (product) => {
+    console.log("product data--------", product);
+    dispatch(setSelectedProduct(product)); // Dispatch the selected product to Redux store
+    navigate(`/selected-product`);  // Use the navigate function to route to the selected product page
+  };
     return(
         <>
-        <Box className="product-list-container">
+        <Box className="product-list-container"
+         onClick={() => handleProduct(product)} // Call handleProduct when card is clicked
+        >
             <Box className="image-section">
             <Box className="heart-icon-container">
         <FavoriteIcon className="heart-icon" style={{color:"grey"}}/>

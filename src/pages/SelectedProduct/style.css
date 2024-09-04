@@ -96,10 +96,15 @@
   .image-section .btn-container {
     display: flex;
     justify-content: space-between;
-    width: 98%;
+    width: 93%;
     margin: auto;
   }
   .image-section .btn-container button {
-    width: 48% !important;
-    font-size: 1.2rem !important;
+    width: 50% !important;
+    font-size: 9px !important;
+}
+
+
+  .add-cart-btn{
+    font-size: 12px;
   }

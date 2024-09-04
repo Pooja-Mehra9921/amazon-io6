@@ -24,6 +24,7 @@ const appSlice = createSlice({
       state.selectedProduct = action.payload;
     },
     setCartItems: (state, action) => {
+      console.log("setCartItems:", action.payload); // Debugging
       state.cartItems.push(action.payload);
     },
     setAddress: (state, action) => {
