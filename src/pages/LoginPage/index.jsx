@@ -67,8 +67,8 @@ const handleLogin = async () => {
     // Process the response
     console.log("--response", data);
     if (status === 200) {
-      dispatch(setUserData(data));  // Dispatches user data to the Redux store
-      localStorage.setItem("userData", JSON.stringify(data));  // Optionally store in localStorage
+      dispatch(setUserData(data));
+      localStorage.setItem("userData", JSON.stringify(data)); // Save user data in localStorage
       navigate("/homepage");
     }
   } catch (err) {

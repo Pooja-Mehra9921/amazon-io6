@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -15,6 +15,8 @@ const ProductCard = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
+  const [isSaved, setIsSaved] = useState(false); // State to track if the product is saved
+
   const handleProduct = (product) => {
     dispatch(setSelectedProduct(product)); 
     navigate(`/selected-product`);  
@@ -23,6 +25,7 @@ const ProductCard = (props) => {
   const handleAddToCart = (product) => (e) => {
     e.stopPropagation(); // Prevent card click event from triggering
     dispatch(setCartItems(product)); 
+    setIsSaved(true); // Disable the "Save For Later" button after click
   };
 
   const { product } = props;
@@ -88,8 +91,9 @@ const ProductCard = (props) => {
               variant="outlined" 
               color="primary"
               onClick={handleAddToCart(product)} // Add to cart without navigating
+              disabled={isSaved} // Disable button after it's clicked
             >
-              Save For Later
+              {isSaved ? "Saved" : "Save For Later"}
             </Button>
             <Button 
               style={{ fontSize: 9 }} 
