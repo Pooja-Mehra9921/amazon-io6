@@ -16,6 +16,7 @@ const ProductCard = (props) => {
   const navigate = useNavigate(); 
 
   const [isSaved, setIsSaved] = useState(false); // State to track if the product is saved
+  const [productInCart, setproductInCart ] = useState(...setCartItems);
 
   const handleProduct = (product) => {
     dispatch(setSelectedProduct(product)); 
